@@ -1,7 +1,7 @@
-<div class="w-full md:w-3/5 text-left p-4 md:p-4 space-y-2">
-                <p class="text-xl text-gray-700 font-bold">Lucy Carter</p>
-                <p class="text-base text-gray-400 font-normal">Graphic Designer</p>
-                <p class="text-base leading-relaxed text-gray-500 font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<template >
+       <div class="w-full md:w-3/5 text-left p-4 md:p-4 space-y-2 border-2 border-purple-500 hover:border-gray-500" >
+                <p class="text-xl text-gray-700 font-bold">{{item.title}}</p>
+                <p class="text-base text-gray-400 font-normal">{{item.created_at}}</p>
                 <div class="flex justify-start space-x-2">
                     <a href="#" class="text-gray-500 hover:text-gray-600">
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -25,4 +25,10 @@
                     </a>
                 </div>
             </div>
-        </div>
+</template>
+
+<script>
+export default {
+       props:['item']
+}
+</script>

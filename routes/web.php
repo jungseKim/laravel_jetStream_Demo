@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\chatController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\chatList;
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +34,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Route::middleware('auth')->get('room_list', [chatList::class, 'index'])
 //     ->name('room.list');
 
+Route::post('post/store', [PostController::class, 'store']);
+
 Route::resource('chat', chatController::class);
 
-Route::resource('post', PostController::class);
+Route::get('index', [PostController::class, 'index'])->name('post.index');
+
+Route::get('create', [PostController::class, 'create'])->name('post.create');
+
+Route::get('post/{id}/show', [PostController::class, 'show'])->name('post.show');
+
+Route::post('post/{id}/edit', [PostController::class, 'edit']);
+
+// Route::group(['prefix'=> 'posts', 'middleware'=>['ad\dfasdfasdf']], function() {
+    
+// });

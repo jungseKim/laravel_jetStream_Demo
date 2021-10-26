@@ -25,8 +25,8 @@
                                 <jet-nav-link :href="route('chat.index')" :active="route().current('chat.index')">
                                     list
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('post.create')" :active="route().current('chat.index')">
-                                    list
+                                <jet-nav-link :href="route('post.create')" :active="route().current('post.create')">
+                                    make
                                 </jet-nav-link>
                             </div>
                         </div>

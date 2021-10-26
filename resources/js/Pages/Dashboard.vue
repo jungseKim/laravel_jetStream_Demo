@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    
+                    <index/>
                 </div>
             </div>
         </div>
@@ -19,10 +19,10 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
-
+    import Index from '@/Pages/Post/Index.vue';
     export default defineComponent({
         components: {
             AppLayout,
-        },
+            Index },
     })
 </script>

@@ -48,12 +48,13 @@ export default{
         this.users.splice(this.users.indexOf(user), 1);
     })
     .listenForWhisper('messageReady'+this.currentUser.id,(e)=>{
-           if(confirm(`${e.user.name}님이 초대하셨습니다`)){
-              this.channel.whisper('gochat'+e.user.id,
-                {user:this.currentUser});
-                const forom=useForm();
-                forom.post()
-           }
+           alert(`${e.user.name}님이 초대하셨습니다`)
+       //     if(confirm(`${e.user.name}님이 초대하셨습니다`)){
+              // this.channel.whisper('gochat'+e.user.id,
+              //   {user:this.currentUser});
+              //   const forom=useForm();
+              //   forom.post()
+       //     }
     }).listenForWhisper('gochat',{
 
     });
@@ -65,6 +66,7 @@ export default{
          invitation(id){
                 this.channel.whisper('messageReady'+id,
                 {user:this.currentUser});
+                console.log(id)
          }
   }
 }
