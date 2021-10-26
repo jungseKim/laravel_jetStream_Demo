@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\chatController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\chatList;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     ->name('room.list');
 
 Route::resource('chat', chatController::class);
+
+Route::resource('post', PostController::class);
