@@ -22,7 +22,7 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('chat.index')" :active="route().current('chat.index')">
+                                <jet-nav-link :href="route('post.index')" :active="route().current('post.index')">
                                     list
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('post.create')" :active="route().current('post.create')">

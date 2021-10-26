@@ -21,7 +21,7 @@
             <button @click="send" class="block bg-green-400 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" >Save</button>
             </div>
         </div>
-  </app-layout> 
+  </app-layout>
 </template>
 
 <script>
@@ -53,7 +53,7 @@ import { useForm } from '@inertiajs/inertia-vue3'
                 //         content:this.content
                 //         })
                 // form.post('post/store');
-                this.$inertia.post('post/store',{
+                this.$inertia.post('/post/store',{
                         title: this.title,
                         image: this.image,
                         content:this.content
@@ -61,6 +61,6 @@ import { useForm } from '@inertiajs/inertia-vue3'
 
         }
        }
-        
+
     }
 </script>

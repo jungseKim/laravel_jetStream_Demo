@@ -10,10 +10,12 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // return Inertia::render('Post/index');
-        return Post::all();
+        $post=Post::latest()->paginate(3);
+        return Inertia::render('Post/Index',['list'=>$post]);
+        // return Post::latest()->paginate(3);
+
     }
     public function create()
     {
@@ -28,7 +30,7 @@ class PostController extends Controller
                 'image' => 'image|max:2000|nullable'
             ]
         );
-        $imageurl = 'noimage.jpg';
+        $imageurl = null;
         if ($request->image) {
             $imageurl = $this->uploadPostImage($request);
         }
@@ -60,12 +62,15 @@ class PostController extends Controller
 
     public function show($id)
     {
+
         $temp = Post::find($id);
+        // return dd($temp);
         $post = $temp->load('user');
         return Inertia::render('Post/Show')->with(['post' => $post]);
     }
     public function edit(Request $request, $id)
     {
+
         $request->validate(
             [
                 'title' => 'required|min:3',
@@ -74,6 +79,9 @@ class PostController extends Controller
             ]
         );
         $post = Post::find($id);
+
+        $this->authorize('update', $post);
+
         if ($request->image) {
             $imagePath = 'public/image/' . $post->img;
             Storage::delete($imagePath);
@@ -83,5 +91,19 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
         return redirect()->route('post.show', ["id" => $post->id]);
+    }
+    public function distroy($id){
+        $post=Post::find($id);
+
+        $this->authorize('delete', $post);
+
+        if($post->image){
+            $imagePath='public/image/'.$post->image;
+            Storage::delete($imagePath);
+        }
+        $post->delete();
+
+        return redirect()->route('post.index');
+
     }
 }
